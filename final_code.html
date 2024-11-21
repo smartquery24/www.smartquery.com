@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Q&A System</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .marquee-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+       body {  
+            margin: 0; /* Remove default margin */
+            font-family: Arial, sans-serif; /* Set default font */
+            display: flex;
+            flex-direction: column; /* Stack content and footer vertically */
+            min-height: 200vh; /* Make the page take up at least the full height of the viewport */
+       }
+       body {
+            font-family: Arial, sans-serif;
+            height: 200px; /* For scrolling effect */
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        
+        /* Style for the page content */
+        .content {
+            flex: 1; /* Make the content take up remaining space */
+            padding: 20px; /* Add padding inside content */
+        }
+        /* CSS Code */
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+
+            max-width: 950px;
+            margin: 80px auto;
+            padding: 2px;
+            background: #ffffff;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .logo {
+            position: absolute; /* This makes the logo position fixed relative to the viewport */
+            top: 05px; /* Distance from the top of the page */
+            left: 00px; /* Distance from the left of the page */
+            width: 235px; /* Width of the logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        h1 {
+            margin-bottom: 35px;
+            font-size: 24px;
+        }
+
+        h2 {
+margin-bottom: 20px;
+font-size: 30px;
+}
+
+        #questionInput {
+            width: 70%;
+            padding: 16px;
+            font-size: 17px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+
+        #askButton {
+
+            padding: 10px 20px;
+           margin-left: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #askButton:hover {
+
+            background-color: #0056b3;
+        }
+
+        .answer {
+
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Title and Subtitle */
+        .header {
+
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+
+            font-size: 60px;
+            color: #333;
+        }
+
+        .header h2 {
+
+            font-size: 40px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* New Navigation Bar */
+        nav {
+
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav button {
+
+            color: white;
+            background-color: #444;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        nav button:hover {
+
+            background-color: #555;
+        }
+
+        /* Sections for login, register, etc. */
+        .section {
+
+            display: none;
+            margin-top: 20px;
+        }
+
+        .section.active {
+
+            display: block;
+        }
+
+        .form-group {
+
+            margin: 10px 0;
+        }
+
+        .form-group input {
+
+            padding: 10px;
+            width: 60%;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        /* New layout for motto and image */
+        .motto-image-container {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .motto {
+
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            width: 50%;
+        }
+
+        .image-container img {
+
+            width: 40%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container img {
+
+            width: 200px; /* Set the image size */
+            height: 200px; /* Set the image size */
+            /* Space between the image and the text */
+        }
+        
+        .image-container {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+            gap: 20px; /* Space between images */
+            max-width: 800px; /* Optional: Set max width for the container */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Styling for each image and its name */
+        .image-item {
+
+            text-align: center; /* Center the content (image and name) */
+        }
+
+        /* Style for the images */
+        .image-container img {
+
+            width: 100%; /* Make images responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Optional: Add rounded corners */
+        }
+
+        /* Styling for the image name */
+        .image-name {
+
+            margin-top: 10px; /* Space between image and name */
+            font-size: 1.2em; /* Increase font size */
+            color: #333; /* Optional: Change text color */
+        }
+
+        /* Optional: Styling for the body */
+    
+       .special-text {
+
+            font-family: 'milasian circa', cursive;
+            font-size: 32px;
+            color: #0a0a0a;
+            text-align: center;
+       }
+       
+       .image-container img {
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+                 
+       h1 {
+            margin-bottom: 40px;
+            font-size: 35px;
+       }
+       
+       footer {
+            background-color: #333; /* Dark background color */
+            color: white; /* White text color */
+            text-align: center; /* Center the text */
+            padding: 30px; /* Space inside the footer */
+            font-size: 30px; /* Set the font size for the footer text */
+            height: 25px; /* Fixed height for the footer */
+            width: 100%; /* Make the footer span the full width of the page */
+            position: relative; /* Positioned relative to the page */
+        }
+        .right-image {
+            float: right; /* Float the image to the right */
+            margin-left: 70px; /* Optional: Adds space between the image and text */
+        }
+        .image-container img {
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Footer styling */
+        footer {
+            background-color: #171616; /* Dark background color */
+            color: white;           /* White text color */
+            padding: 10px;          /* Padding inside the footer */
+            text-align: center;     /* Center text horizontally */
+            position: fixed;        /* Fixed position at the bottom */
+            bottom: 0;              /* Align footer at the bottom of the page */
+            width: 0%;            /* Make the footer full-width */
+        }
+    </style>       
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+     <!-- Marquee container for scrolling text -->
+     <div class="marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            &copy; 2024 My Website. All rights reserved.
+        </marquee>
+    </div>
+    <!-- Logo in the top-left corner -->
+    <img src="E:\photos\hack\logo2.jpg" alt="Logo" class="logo">
+    
+    <div class="header">
+        <h1>SMART QUERY</h1>
+        <h2>AI Learning Assistant for Students</h2>
+    </div>
+    <nav>
+        <button id="loginBtn">Login</button>
+        <button id="registerBtn">Register</button>
+        <button id="coursesBtn">Courses</button>
+        <button id="eventsBtn">Events</button>
+        <button id="home">Home</button>
+        <button id="help">Help</button>        
+    </nav>
+    <!-- Login Section -->
+    <div id="loginSection" class="section">
+        <h2>Login</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password">
+        </div>
+        <button>Submit</button>
+    </div>
+    <!-- Register Section -->
+    <div id="registerSection" class="section">
+        <h2>Register</h2>
+        <div class="form-group">
+            <input type="text" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password">
+        </div>
+        <button>Register</button>
+    </div>
+    <!-- Courses Section -->
+    <div id="coursesSection" class="section">
+        <h2>Available Courses</h2>
+        <ul>
+            <li>Course 1: Web Development</li>
+            <li>Course 2: Data Science</li>
+            <li>Course 3: AI & Machine Learning</li>
+            <li>Course 4: Cyber Security</li>
+            <li>Course 5: Game Development</li>
+            <li>course 6: SQL</li>
+
+        </ul>
+    </div>
+    <!-- Events Section -->
+    <div id="eventsSection" class="section">
+        <h2>Upcoming Events</h2>
+        <ul>
+            <li>Event 1: Tech Conference - December 1, 2024</li>
+            <li>Event 2: Hackathon - January 15, 2025</li>
+            <li>Event 3: Workshop on AI - February 20, 2025</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Ask Me Anything</h1>
+        <input id="questionInput" type="text" placeholder="Type your question here...">
+        <button id="askButton">Ask</button>
+        <div id="answerDisplay" class="answer"></div>
+        
+        <!-- New Layout for Motto and Image -->
+        <div class="motto-image-container">
+            <div class="motto">
+                <p class="special-text">Empowering Students Through Knowledge</p>
+            </div>
+
+            <div class="right-content">   
+            <div class="image-container">
+                <img src="E:\photos\hack\imgpro.jpg" alt="hackathon">
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript for handling the question
+        const predefinedAnswers = {
+            "what is java": "Java is a high-level, class-based, object-oriented programming language that is widely used for building applications.",
+            "what is python": "Python is a popular programming language known for its simplicity and versatility, often used for web development, data analysis, and AI.",
+            "what is html": "HTML stands for HyperText Markup Language, and it is used to create the structure of web pages.",
+            "what is css": "CSS stands for Cascading Style Sheets, and it is used to style and layout web pages.",
+            "Do you guys provide internship and do you offer EMI payments": "Yes, we provide internship and we dont offer EMI payments."
+            
+        };
+
+        document.getElementById('askButton').addEventListener('click', () => {
+            const question = document.getElementById('questionInput').value.trim().toLowerCase();
+            const answerDisplay = document.getElementById('answerDisplay');
+
+            if (!question) {
+                answerDisplay.textContent = "Please ask a valid question.";
+                return;
+            }
+
+            // Check for predefined answers
+            if (predefinedAnswers[question]) {
+                answerDisplay.textContent = predefinedAnswers[question];
+            } else {
+                answerDisplay.textContent = "I don't know the answer to that question yet.";
+            }
+        });
+        // JavaScript for handling the navigation buttons
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            toggleSection('loginSection');       
+        });
+
+        document.getElementById('registerBtn').addEventListener('click', () => {
+            toggleSection('registerSection');
+        });
+
+        document.getElementById('coursesBtn').addEventListener('click', () => {
+            toggleSection('coursesSection');
+        });
+        document.getElementById('eventsBtn').addEventListener('click', () => {
+            toggleSection('eventsSection');
+        });
+
+        function toggleSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+    <section name="Courses">
+        <h1>Courses</h1>
+    </section>
+    <div class="image-container">
+        <!-- First row of images with names -->
+        <div class="image-item">
+            <img src="E:\photos\hack\wd.jpg" alt="Image 1">
+            <div class="course 1">Web development</div>
+        </div>
+        <div class="image-item">
+            <img src="E:\photos\hack\data science.jpg" alt="Image 2">
+            <div class="course 2">Data science</div>
+        </div>
+        <!-- Second row of images with names -->
+        <div class="image-item">
+            <img src="E:\photos\hack\AI1.jpg" alt="Image 3">
+            <div class="course 3">AI & machine learning</div>
+        </div>
+        <div class="image-item">
+            <img src="E:\photos\hack\cyber security.jpg" alt="Image 4">
+            <div class="course 4">Cyber security</div>
+        </div>
+        <div class="image-item">
+            <img src="E:\photos\hack\game development.jpg" alt="Image 5">
+            <div class="course 5">Game development</div>
+        </div>
+        <div class="image-item">
+            <img src="E:\photos\hack\sql.jpg" alt="Image 6">
+            <div class="course 6">SQL</div>
+        </div>
+      <center> <section id="contact">
+            <h1>Contact Section</h1>
+            <div class="single-line-text">
+            <p style ="font-size:25px;">This is the contact section of the website  **********.</p></div>
+            <div class="single-line-text">
+            <p style="font-size:25px;">This is the email of this website Smartquery****@gmail.com</p></div>
+        </section></center>
+   
+</body>
+</html>
